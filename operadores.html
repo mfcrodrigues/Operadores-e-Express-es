@@ -1,49 +1,250 @@
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Atividade Operadores</title>
-    </head>
-    <body>
-        <h2>Calculadora de Resto</h2>
-        <p id="resultado"></p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade Operadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            background-color: #1e1e2e;
+            color: #e0e0e0;
+        }
+        h1 {
+            color: #89b4fa;
+            border-bottom: 2px solid #89b4fa;
+            padding-bottom: 10px;
+        }
+        .desafio {
+            background-color: #292a3a;
+            border-left: 4px solid #89b4fa;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        .desafio h3 {
+            margin-top: 0;
+            color: #f9e2af;
+        }
+        .resultado {
+            font-family: "Courier New", monospace;
+            background-color: #11111b;
+            padding: 10px;
+            border-radius: 4px;
+            white-space: pre-line;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Atividade de Operadores</h1>
+
+    <div class="desafio">
+        <h3>1. Calculadora de Resto</h3>
+        <p id="resultado1" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>2. O Poder da Exponenciação</h3>
+        <p id="resultado2" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>3. Incremento Pré e Pós</h3>
+        <p id="resultado3" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>4. Verificador de Igualdade</h3>
+        <p id="resultado4" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>5. Maior ou Menor?</h3>
+        <p id="resultado5" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>6. Diferença Estrita</h3>
+        <p id="resultado6" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>7. Operador E (&&) - Acesso Permitido</h3>
+        <p id="resultado7" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>8. Operador OU (||) - Meia Entrada</h3>
+        <p id="resultado8" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>9. Negação Lógica (!)</h3>
+        <p id="resultado9" class="resultado"></p>
+    </div>
+
+    <div class="desafio">
+        <h3>10. Desafio Mestre: Expressão Combinada</h3>
+        <p id="resultado10" class="resultado"></p>
+    </div>
 
     <script language="javascript">
-        //1. Calculadora de Resto
-        //Crie duas variáveis numéricas. Use o operador de Resto da Divisão (%) para exibir o resto da divisão do primeiro número pelo segundo
+
+        // Função reutilizável para exibir o processo do cálculo/comparação na tela
+        function mostrarResultado(id, texto) {
+            document.getElementById(id).innerHTML = texto;
+        }
+
+        // ===================================================
+        // 1. Calculadora de Resto
+        // Use o operador % para exibir o resto da divisão do primeiro número pelo segundo
+        // ===================================================
         var num1 = 10;
         var num2 = 3;
-
         var resto = num1 % num2;
-
-        document.getElementById("resultado").innerHTML =
+        mostrarResultado("resultado1",
             "Número 1: " + num1 + "<br>" +
             "Número 2: " + num2 + "<br>" +
-            "Cálculo: " + num1 + " % " + num2 + " = " + resto + "<br>" +
-            "O resto da divisão é: " + resto;
-    </script>
-</html>    
+            "Cálculo: " + num1 + " % " + num2 + " = " + resto
+        );
 
-<html>  
-</head>
-    <body>
-        <h2>Exponenciação</h2>
-        <p id="resultado"></p>
-    </body>
-
-    <script language="javascript">
-//2. O Poder da Exponenciação
-//Declare uma variável base e outra expoente. Use o operador ** para calcular a potência e exiba o resultado.
-
+        // ===================================================
+        // 2. O Poder da Exponenciação
+        // Use o operador ** para calcular a potência
+        // ===================================================
         var base = 2;
-        var expoente = 3;
+        var expoente = 8;
         var potencia = base ** expoente;
+        mostrarResultado("resultado2",
+            "Base: " + base + "<br>" +
+            "Expoente: " + expoente + "<br>" +
+            "Cálculo: " + base + " ** " + expoente + " = " + potencia
+        );
 
-        document.getElementById("resultado").innerHTML +=
-           "<br><br>" +
-           "Número 1: " + base + "<br>" +
-           "Número 2: " + expoente + "<br>" +
-           "Cálculo: " + base + " ** " + expoente + " = " + potencia + "<br>" +
-           "O resultado da exponenciação é: " + potencia;
-  </script>
-</html> 
+        // ===================================================
+        // 3. Incremento Pré e Pós
+        // i = 10. Exibir ++i e depois i++.
+        //
+        // Explicação: o pré-incremento (++i) SOMA 1 antes de retornar o valor,
+        // ou seja, já mostra o número atualizado (11).
+        // Já o pós-incremento (i++) retorna o valor ATUAL (que já era 11, do passo
+        // anterior) e SÓ DEPOIS soma 1, então na tela aparece 11 e i vira 12
+        // internamente. Por isso os resultados exibidos parecem "iguais ou
+        // diferentes" dependendo do momento em que são lidos.
+        // ===================================================
+        var i = 10;
+        var preIncremento = ++i;   // i vira 11, e preIncremento recebe 11
+        var posIncremento = i++;   // posIncremento recebe 11 (valor atual), depois i vira 12
+        mostrarResultado("resultado3",
+            "Valor inicial de i: 10<br>" +
+            "++i (pré-incremento) = " + preIncremento + " (i já soma antes de retornar)<br>" +
+            "i++ (pós-incremento) = " + posIncremento + " (retorna o valor atual, depois soma)<br>" +
+            "Valor final de i = " + i
+        );
+
+        // ===================================================
+        // 4. Verificador de Igualdade
+        // Peça dois números via prompt e use == para comparar
+        // ===================================================
+        var n1 = prompt("Digite o primeiro número:");
+        var n2 = prompt("Digite o segundo número:");
+        var saoIguais = n1 == n2;
+        mostrarResultado("resultado4",
+            "Número 1 digitado: " + n1 + "<br>" +
+            "Número 2 digitado: " + n2 + "<br>" +
+            "Cálculo: " + n1 + " == " + n2 + " → " + saoIguais
+        );
+
+        // ===================================================
+        // 5. Maior ou Menor?
+        // Compare se 15 é maior ou igual (>=) a 20, usando document.write
+        // ===================================================
+        var valorA = 15;
+        var valorB = 20;
+        var maiorOuIgual = valorA >= valorB;
+        // Como o desafio pede document.write, escrevemos direto no elemento
+        // (usamos innerHTML aqui para não sobrescrever a página toda,
+        // que é o que document.write() faria se chamado após o carregamento)
+        mostrarResultado("resultado5",
+            "Comparação: " + valorA + " >= " + valorB + "<br>" +
+            "Resultado: " + maiorOuIgual
+        );
+
+        // ===================================================
+        // 6. Diferença Estrita
+        // Verifica se o nome digitado é diferente de "Admin"
+        // ===================================================
+        var nomeDigitado = prompt("Digite seu nome:");
+        var nomeDiferente = nomeDigitado != "Admin";
+        mostrarResultado("resultado6",
+            "Nome digitado: " + nomeDigitado + "<br>" +
+            "Cálculo: \"" + nomeDigitado + "\" != \"Admin\" → " + nomeDiferente
+        );
+
+        // ===================================================
+        // 7. Operador E (&&) - Acesso Permitido
+        // Só entra se tiver ingresso E estiver na lista
+        // ===================================================
+        var temIngresso = true;
+        var estaNaLista = false;
+        var podeEntrar = temIngresso && estaNaLista;
+        mostrarResultado("resultado7",
+            "temIngresso = " + temIngresso + "<br>" +
+            "estaNaLista = " + estaNaLista + "<br>" +
+            "Cálculo: temIngresso && estaNaLista → " + podeEntrar
+        );
+
+        // ===================================================
+        // 8. Operador OU (||) - Meia Entrada
+        // Tem direito se for Estudante OU tiver menos de 21 anos
+        // ===================================================
+        var ehEstudante = true;
+        var idade = 25;
+        var temMenosDe21 = idade < 21;
+        var temDireitoMeiaEntrada = ehEstudante || temMenosDe21;
+        mostrarResultado("resultado8",
+            "ehEstudante = " + ehEstudante + "<br>" +
+            "idade = " + idade + " (menos de 21? " + temMenosDe21 + ")<br>" +
+            "Cálculo: ehEstudante || temMenosDe21 → " + temDireitoMeiaEntrada
+        );
+
+        // ===================================================
+        // 9. Negação Lógica (!)
+        // chuva = true. Inverter com !
+        // ===================================================
+        var chuva = true;
+        var vaiFazerSol = !chuva;
+        mostrarResultado("resultado9",
+            "chuva = " + chuva + "<br>" +
+            "Cálculo: !chuva = " + vaiFazerSol + "<br>" +
+            "Hoje o sol vai brilhar? " + (vaiFazerSol ? "Sim!" : "Não, está chovendo.")
+        );
+
+        // ===================================================
+        // 10. Desafio Mestre: Expressão Combinada
+        // (10 > 5) && (7 < 3) || !(5 == 5)
+        //
+        // Ordem de avaliação (precedência):
+        // 1) (10 > 5)  → true
+        // 2) (7 < 3)   → false
+        // 3) (5 == 5)  → true, então !(5 == 5) → false
+        // 4) true && false → false
+        // 5) false || false → false
+        // Resultado final: false
+        // ===================================================
+        var expressaoCombinada = (10 > 5) && (7 < 3) || !(5 == 5);
+        mostrarResultado("resultado10",
+            "Expressão: (10 > 5) && (7 < 3) || !(5 == 5)<br>" +
+            "Passo 1: (10 > 5) → true<br>" +
+            "Passo 2: (7 < 3) → false<br>" +
+            "Passo 3: !(5 == 5) → false<br>" +
+            "Passo 4: true && false → false<br>" +
+            "Passo 5: false || false → false<br>" +
+            "Resultado final: " + expressaoCombinada
+        );
+
+    </script>
+</body>
+</html>
